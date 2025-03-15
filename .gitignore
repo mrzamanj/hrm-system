@@ -1,0 +1,67 @@
+ 
+# Node.js
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+package-lock.json
+.env
+
+# Go
+bin/
+*.exe
+*.out
+*.test
+*.log
+vendor/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+*.eggs/
+dist/
+build/
+*.log
+*.env
+*.db
+*.sqlite3
+
+# Docker
+.docker/
+docker-compose.override.yml
+docker-compose.yml
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+*.log
+
+# VS Code
+.vscode/
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# IDEs (e.g., JetBrains, Eclipse, etc.)
+.idea/
+.project/
+
+# Test Coverage
+coverage/
+
+# IntelliJ IDEA
+.idea/
+
+# Additional directories and files you might not want to track
+.env.local
+.env.*.local
+*.swp
+*.swo

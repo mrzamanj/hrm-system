@@ -1,0 +1,305 @@
+ 
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "HRM System API",
+      "description": "API documentation for the Human Resource Management System (HRM) built using microservices.",
+      "version": "1.0.0"
+    },
+    "servers": [
+      {
+        "url": "http://localhost:3000",
+        "description": "Local Development Server"
+      }
+    ],
+    "paths": {
+      "/users/register": {
+        "post": {
+          "tags": ["User Service"],
+          "summary": "Register a new user",
+          "operationId": "registerUser",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "example": "John Doe"
+                    },
+                    "email": {
+                      "type": "string",
+                      "example": "johndoe@example.com"
+                    },
+                    "password": {
+                      "type": "string",
+                      "example": "password123"
+                    }
+                  },
+                  "required": ["name", "email", "password"]
+                }
+              }
+            }
+          },
+          "responses": {
+            "201": {
+              "description": "User registered successfully"
+            },
+            "400": {
+              "description": "Bad Request"
+            }
+          }
+        }
+      },
+      "/users/login": {
+        "post": {
+          "tags": ["User Service"],
+          "summary": "Authenticate user and return JWT",
+          "operationId": "loginUser",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "email": {
+                      "type": "string",
+                      "example": "johndoe@example.com"
+                    },
+                    "password": {
+                      "type": "string",
+                      "example": "password123"
+                    }
+                  },
+                  "required": ["email", "password"]
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Authentication successful",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "token": {
+                        "type": "string",
+                        "example": "jwt_token"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            }
+          }
+        }
+      },
+      "/payroll/{userId}": {
+        "get": {
+          "tags": ["Payroll Service"],
+          "summary": "Get payroll details for a user",
+          "operationId": "getPayroll",
+          "parameters": [
+            {
+              "name": "userId",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "example": "12345"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Payroll data retrieved successfully",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "salary": {
+                        "type": "number",
+                        "example": 5000
+                      },
+                      "bonus": {
+                        "type": "number",
+                        "example": 500
+                      },
+                      "deductions": {
+                        "type": "number",
+                        "example": 300
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "User not found"
+            }
+          }
+        }
+      },
+      "/leave/{userId}": {
+        "post": {
+          "tags": ["Leave Service"],
+          "summary": "Request leave for a user",
+          "operationId": "requestLeave",
+          "parameters": [
+            {
+              "name": "userId",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "example": "12345"
+              }
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "leaveType": {
+                      "type": "string",
+                      "example": "sick"
+                    },
+                    "startDate": {
+                      "type": "string",
+                      "format": "date",
+                      "example": "2025-03-20"
+                    },
+                    "endDate": {
+                      "type": "string",
+                      "format": "date",
+                      "example": "2025-03-22"
+                    }
+                  },
+                  "required": ["leaveType", "startDate", "endDate"]
+                }
+              }
+            }
+          },
+          "responses": {
+            "201": {
+              "description": "Leave request submitted successfully"
+            },
+            "400": {
+              "description": "Invalid leave request"
+            }
+          }
+        }
+      },
+      "/notifications/send": {
+        "post": {
+          "tags": ["Notification Service"],
+          "summary": "Send a notification",
+          "operationId": "sendNotification",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "userId": {
+                      "type": "string",
+                      "example": "12345"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Your leave request has been approved."
+                    }
+                  },
+                  "required": ["userId", "message"]
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Notification sent successfully"
+            },
+            "400": {
+              "description": "Invalid notification request"
+            }
+          }
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "User": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "email": {
+              "type": "string"
+            },
+            "password": {
+              "type": "string"
+            }
+          },
+          "required": ["name", "email", "password"]
+        },
+        "Payroll": {
+          "type": "object",
+          "properties": {
+            "salary": {
+              "type": "number"
+            },
+            "bonus": {
+              "type": "number"
+            },
+            "deductions": {
+              "type": "number"
+            }
+          }
+        },
+        "LeaveRequest": {
+          "type": "object",
+          "properties": {
+            "leaveType": {
+              "type": "string"
+            },
+            "startDate": {
+              "type": "string",
+              "format": "date"
+            },
+            "endDate": {
+              "type": "string",
+              "format": "date"
+            }
+          },
+          "required": ["leaveType", "startDate", "endDate"]
+        },
+        "Notification": {
+          "type": "object",
+          "properties": {
+            "userId": {
+              "type": "string"
+            },
+            "message": {
+              "type": "string"
+            }
+          },
+          "required": ["userId", "message"]
+        }
+      }
+    }
+  }
+  
