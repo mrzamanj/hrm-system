@@ -6,7 +6,8 @@ This repository contains the source code for an **Enterprise-grade Human Resourc
 
 The project demonstrates the application of modern technologies such as **Node.js**, **Go**, **Python**, **Kafka**, **Redis**, and **Docker** in a distributed environment, providing robust solutions for handling HR operations efficiently.
 
----
+
+
 
 ## Why I Built This HRM System
 
@@ -19,7 +20,8 @@ The idea behind building this HRM system was to create a **scalable, maintainabl
 
 The goal is to provide a solid base for managing HR operations with the flexibility to evolve as business requirements change.
 
----
+
+
 
 ## Technology Stack
 
@@ -54,7 +56,8 @@ The following technologies are used in this project to provide a flexible, scala
 ### 8. **PostgreSQL/MySQL**
    - Relational databases are used for storing structured data such as employee details, payroll records, and leave history.
 
----
+
+
 
 ## How Microservices Work in This HRM System
 
@@ -78,7 +81,8 @@ The HRM system is built using a **Microservices Architecture**, where each servi
 - **Resilience**: If one service fails, others continue to function.
 - **Flexibility**: New features can be added as new services without disrupting the entire system.
   
----
+
+
 
 ## What I Learned From Building This HRM System
 
@@ -87,7 +91,8 @@ The HRM system is built using a **Microservices Architecture**, where each servi
 - **Containerization**: Docker provided a simple and consistent way to deploy and manage services. I learned how to use Docker Compose for orchestrating multiple services and databases.
 - **Performance Optimization**: Caching with Redis has significantly reduced the load on databases and improved the overall performance of the system.
   
----
+
+
 
 ## Scope of the HRM System
 
@@ -104,7 +109,8 @@ Currently, the HRM system includes:
 - **Mobile App Integration**: Develop a mobile app for employees to request leave, check payroll, and get notifications.
 - **Advanced Reporting**: Generate detailed reports on employee performance, payroll, leave usage, etc.
 
----
+
+
 
 ## Getting Started
 
@@ -148,7 +154,8 @@ To get started with the HRM system, follow these steps:
 
 5. Access the system on `http://localhost:3000` (or the appropriate port configured).
 
----
+
+
 
 ## Conclusion
 
@@ -156,7 +163,8 @@ This HRM system is an evolving project with the goal of providing an enterprise-
 
 Feel free to explore, fork, and contribute to the project!
 
----
+
+
 
 ## License
 
